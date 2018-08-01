@@ -1,0 +1,42 @@
+{
+  "pollutants" : [
+    {
+      "name": "PM25",
+      "desc": "<b>Sources primaires:</b> Résidences (feu de cheminée, cuisine, etc) <p><b>Effets sur la santé:</b>  Asthme, cancer du poumon, maladies cardio-vasculaires, complications de la grossesse. Ces particules peuvent s'infiltrer dans les bronches.",
+      "source": "Résidences (feu de cheminée, cuisine, etc)",
+      "image": "pm25"
+    },
+    {
+      "name": "PM10",
+      "desc": "<b>Sources primaires:</b> Résidences, usines, traffic routier, agro-industrie. <p><b>Effets sur la santé:</b> Asthme, cancer du poumon, maladies cardio-vasculaires, complications de la grossesse. Ces particules peuvent s'accumuler dans les voies respiratoires mais n'atteigent pas les bronches.",
+      "source": "Résidences, usines, traffic routier, agro-industrie.",
+      "image": "pm10"
+    },
+    {
+      "name": "Dioxide d'azote",
+      "desc": "<b>Sources primaires:</b> Traffic routier <p><b>Effets sur la santé:</b> maladies respiratiores, irritation des bronches, risques de crises asthmatiques accrus chez les enfants.",
+      "source": "Traffic routier",
+      "image": "nox"
+    },
+    {
+      "name": "Dioxide de sulfure",
+      "desc": "<b>Sources primaires:</b> Usines <p><b>Effets sur la santé:</b> difficultés respiratoires, augmentation de la sensibilité des asthmatiques , irritation gastrique, démangaiesons, bouffée de chaleur, risuqe mortelle en cas d'intoxication élevée.",
+      "source": "Usines",
+      "image": "so2"
+    },
+    {
+      "name": "Monoxide de carbone",
+      "desc": "<b>Sources primaires:</b> Résidences, usines. <p><b>Effets sur la santé:</b>  C'est un gaz indétectable et mortelle pour un humain. il réduit la quantité d'oxygène transmises aux organes vitaux, provoquant des migraines, de la perte d'équilibre, puis l'évanouissement et enfin la mort. ",
+      "source": "Résidences, usines",
+      "image": "co"
+    },
+    {
+      "name": "Nuisance sonore",
+      "desc": "<b>Sources primaires:</b> Traffic routier, travaux, bureau, voisinage. <p><b>Effets sur la santé:</b> surdité partielle, perte de sommeil, hypertension arterielle, crise cardiaque, accident vasculo-cérébral.",
+      "source": "Traffic routier, travaux, bureau, voisinage",
+      "image": "noise"
+    }
+
+  ]
+
+}

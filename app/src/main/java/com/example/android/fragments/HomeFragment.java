@@ -14,7 +14,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.CardView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -107,8 +106,9 @@ public class HomeFragment extends Fragment {
                 List<String> listUnits = new ArrayList<>();
                 for (int i = 0; i < mDataModel.chartList.size(); i++)
                 {
-                    if (!listUnits.contains(mDataModel.chartList.get(i).getValue().getType())) {
-                        listTypes.add(mDataModel.chartList.get(i).getValue().getType());
+                    String type = mDataModel.chartList.get(i).getValue().getType();
+                    if (!listTypes.contains(chartItemAdapter.getTranslation(type))) {
+                        listTypes.add(chartItemAdapter.getTranslation(type));
                     }
                     if (!listUnits.contains(mDataModel.chartList.get(i).getValue().getUnit())) {
                         listUnits.add(mDataModel.chartList.get(i).getValue().getUnit());
@@ -264,11 +264,13 @@ public class HomeFragment extends Fragment {
             boolean existing = false;
             int i = 0;
             while (!existing && i < mDataModel.chartList.size()) {
-                existing = mDataModel.chartList.get(i).getValue().getType().equals(mSpinnerDataType.getSelectedItem());
+                String type = mDataModel.chartList.get(i).getValue().getType();
+                String selectedType = mSpinnerDataType.getSelectedItem().toString();
+                existing = (chartItemAdapter.getTranslation(type).equals(selectedType));
                 i++;
             }
             if (!existing) {
-                Chart chart = new Chart(mSpinnerDataType.getSelectedItem().toString(),
+                Chart chart = new Chart(chartItemAdapter.revertTranslation(mSpinnerDataType.getSelectedItem().toString()),
                         mSpinnerDataUnits.getSelectedItem().toString(),
                         Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256)),
                         DataModel.AVG_HOUR);

@@ -1,7 +1,7 @@
 {
   "pollutants" : [
     {
-      "name": "PM2.5",
+      "name": "PM25",
       "desc": "<b>Primary sources:</b> Habitation (coal fire, kitchen, etc) <p><b>Health effects:</b>  Asthma, lung cancer, cardio-respiratory diseases, adverse pregnancy outcomes. It corresponds to thoracic particles which reach bronchi.",
       "source": "Habitation (coal fire, kitchen, ...)",
       "image": "pm25"
@@ -32,8 +32,8 @@
     },
     {
       "name": "Noise",
-      "desc": "<b>Primary sources:</b> Depends mostly on the location. <p><b>Health effects:</b> hearing loss, sleep disturbances, high blood pressure, heart attack, strokes.",
-      "source": "Depends mostly on the location",
+      "desc": "<b>Primary sources:</b> Road traffic, industry, work office, neighborhood <p><b>Health effects:</b> hearing loss, sleep disturbances, high blood pressure, heart attack, strokes.",
+      "source": "Road traffic, industry, work office, neighborhood",
       "image": "noise"
     }
 

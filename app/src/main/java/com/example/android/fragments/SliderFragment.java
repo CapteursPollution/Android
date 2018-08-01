@@ -5,6 +5,8 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
@@ -34,6 +36,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 
 public class SliderFragment extends Fragment {
@@ -48,6 +51,7 @@ public class SliderFragment extends Fragment {
     SettingsModel mSettingsModel;
     MutableLiveData<Settings> mSettings;
     private ArrayList<Sensor> listSensors = new ArrayList<>();
+    private Locale mLocale;
 
     public SliderFragment() {
     }
@@ -84,9 +88,16 @@ public class SliderFragment extends Fragment {
         //Init views Title/description/image shared by all slides
         initSlides(rootView);
 
+        switch (mLayout) {
+            case R.layout.fragment_slider_sensor:
+                ListView listView = rootView.findViewById(R.id.listSensors);
+                listView.setAdapter(setup_list_sensors());
+                break;
+            case R.layout.fragment_slider_rpi:
+        }
+
         if (mLayout == R.layout.fragment_slider_sensor) {
-            ListView listView = rootView.findViewById(R.id.listSensors);
-            listView.setAdapter(setup_list_sensors());
+
         }
 
         if (mLayout == R.layout.fragment_slider_rpi) {
@@ -104,9 +115,20 @@ public class SliderFragment extends Fragment {
         String title = "";
         int imgId = 0;
         StringBuilder txt = new StringBuilder();
+        String json;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            mLocale = Resources.getSystem().getConfiguration().getLocales().get(0);
+        } else {
+            //noinspection deprecation
+            mLocale = Resources.getSystem().getConfiguration().locale;
+        }
 
         try {
-            String json = JsonReaderHelper.loadJSONFromAsset("slides.json", getContext());
+            if (Locale.FRANCE.getDisplayLanguage().equals(mLocale.getDisplayLanguage())) {
+                json = JsonReaderHelper.loadJSONFromAsset("slides-fr.json", getContext());
+            } else {
+                json = JsonReaderHelper.loadJSONFromAsset("slides-en.json", getContext());
+            }
             JSONObject root = new JSONObject(json);
             JSONObject slide = root.getJSONArray("slide").getJSONObject(mPosition);
 
@@ -267,7 +289,7 @@ public class SliderFragment extends Fragment {
     }
 
     private void getSensorsData() {
-        String json = JsonReaderHelper.loadJSONFromAsset("sensors.json", getContext());
+        String json = JsonReaderHelper.loadJSONFromAsset("sensors-en.json", getContext());
 
         try {
             JSONObject obj = new JSONObject(json);
